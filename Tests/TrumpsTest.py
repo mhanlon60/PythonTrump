@@ -1,15 +1,28 @@
 import unittest
-from src.Trumps import Trumps
+import src.Trumps
+
 
 class TrumpsTest(unittest.TestCase):
-    trumps = Trumps()
 
     def test_getPlayerName(self):
         trueArray = ["Daniel", "Mark"]
-        result = self.trumps.getName()
+        result = src.Trumps.getName()
         self.assertIn(result, trueArray)
 
     def test_notFraser(self):
-        result = self.trumps.getName()
-        print(result)
+        result = src.Trumps.getName()
         self.assertEqual("Not Today Fraser", result)
+
+    def test_trumpSuit(self):
+        result = src.Trumps.gettrumpSuit()
+        self.assertIn(result, ["C", "D", "H", "S"])
+
+    def test_leaderboard(self):
+        import os.path
+        from os import path
+        self.assertTrue(path.exists("Leaderboard.txt"))
+
+    def test_playGame(self):
+        result = src.Trumps.playGame([["C5", "C8", "D8", "DK", "HJ", "HQ", "HA"]], "Mark")
+        self.assertEqual(SystemExit, result)
+
