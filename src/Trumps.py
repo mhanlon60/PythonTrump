@@ -68,7 +68,44 @@ def leaderboard(handswon, handslost, playerName):
         else:
             quit()
 
+def cardsValue1(chosenCard):
 
+    intvalue1 = 0;
+
+    if chosenCard[1] == "J":
+        intvalue1 = 1000
+    elif chosenCard[1] == "Q":
+        intvalue1 = 1001
+    elif chosenCard[1] == "K":
+        intvalue1 = 1002
+    elif chosenCard[1] == "A":
+        intvalue1 = 1003
+    elif len(chosenCard) == 3:
+        intvalue1 = 999
+    else:
+        intvalue1 = int(chosenCard[1])
+
+    return intvalue1
+
+
+def cardsValue2(opponentCard):
+
+    intvalue2 = 0;
+
+    if opponentCard[1] == "J":
+        intvalue2 = 1000
+    elif opponentCard[1] == "Q":
+        intvalue2 = 1001
+    elif opponentCard[1] == "K":
+        intvalue2 = 1002
+    elif opponentCard[1] == "A":
+        intvalue2 = 1003
+    elif len(opponentCard) == 3:
+        intvalue2 = 999
+    else:
+        intvalue2 = int(opponentCard[1])
+
+    return intvalue2
 
 
 def playGame(playerDeck, opponentDeck, playerName, trumpSuit):
@@ -112,20 +149,20 @@ def playGame(playerDeck, opponentDeck, playerName, trumpSuit):
                             foundsameSuit = True
 
                             if (foundsameSuit == True):
-                                if ((len(chosenCard) and len(opponentCard)) == 2):
-                                    if ((int(ord(chosenCard[1])) > int((ord(opponentCard[1]))))):
+                               ## if ((len(chosenCard) and len(opponentCard)) == 2):
+                                    if (cardsValue1(chosenCard) > cardsValue2(opponentCard)):
                                         print("You win\n")
                                         handswon = handswon + 1
-                                    elif ((int(ord(chosenCard[1])) < int((ord(opponentCard[1]))))):
+                                    elif (cardsValue1(chosenCard) < cardsValue2(opponentCard)):
                                         print("You lost\n")
                                         handslost = handslost + 1
-                                else:
-                                    if (len(chosenCard) == 2 and (int(ord(chosenCard[1]))) > int(ord("A"))):
-                                        print("You win\n")
-                                        handswon = handswon + 1
-                                    else:
-                                        print("You lost\n")
-                                        handslost = handslost + 1
+                               ## else:
+                                ##    if (len(chosenCard) == 2 and (int(ord(chosenCard[1]))) > int(ord("A"))):
+                                  ##      print("You win\n")
+                                    ##    handswon = handswon + 1
+                                    ##else:
+                                      ##  print("You lost\n")
+                                        ##handslost = handslost + 1
 
                             Suitvalidated = True
                             break
@@ -139,21 +176,6 @@ def playGame(playerDeck, opponentDeck, playerName, trumpSuit):
                                 opponentDeck[0].pop(t)
                                 print("Opponent plays " + opponentCard)
                                 foundtrumpSuit = True
-
-                                if ((len(chosenCard) and len(opponentCard)) == 2):
-                                    if ((int(ord(chosenCard[1])) > int((ord(opponentCard[1]))))):
-                                        print("You win\n")
-                                        handswon = handswon + 1
-                                    elif ((int(ord(chosenCard[1])) < int((ord(opponentCard[1]))))):
-                                        print("You lost\n")
-                                        handslost = handslost + 1
-                                else:
-                                    if (len(chosenCard) == 2 and (int(ord(chosenCard[1]))) > int(ord("A"))):
-                                        print("You win")
-                                        handswon = handswon + 1
-                                    else:
-                                        print("You lost\n")
-                                        handslost = handslost + 1
 
                                 if (foundtrumpSuit == True and foundsameSuit == False):
                                     print("You lose\n")
