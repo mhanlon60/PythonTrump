@@ -37,7 +37,7 @@ class TrumpsTest(unittest.TestCase):
         result = src.Trumps.cardsValue2("DQ")
         self.assertEqual(1001,result)
 
-    def test_ifCardValueIs10(self):
+    def test_CardValueOf10(self):
         result = src.Trumps.cardsValue1("H10")
         self.assertEqual(999,result)
 

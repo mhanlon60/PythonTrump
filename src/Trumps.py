@@ -1,5 +1,9 @@
 from src.playingCard import generateDeck, shuffleCards, dealCards
+from src.Input import Input
+from getInputString import getInputString
+from getInputInt import getInputInt
 import random
+
 
 deck = []
 playerDeck = []
@@ -27,8 +31,10 @@ def initDeck():
 deck = initDeck()
 # print(deck)
 
+
 def getName():
-    playerName = input("Please enter your name : ")
+
+    playerName = input("Please enter your name")
 
     if playerName.lower() != "fraser":
         return playerName
