@@ -25,10 +25,7 @@ def initDeck():
 
 
 deck = initDeck()
-
-
 # print(deck)
-
 
 def getName():
     playerName = input("Please enter your name : ")
