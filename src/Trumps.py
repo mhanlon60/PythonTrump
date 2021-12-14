@@ -21,6 +21,7 @@ opponentCard = ""
 handswon = 0
 handslost = 0
 
+userInput = None
 
 def initDeck():
     deck = generateDeck()
@@ -33,14 +34,17 @@ deck = initDeck()
 
 
 def getName():
-
-    playerName = input("Please enter your name")
-
+    setUserInput(getInputString)
+    playerName = userInput.getInputString()
     if playerName.lower() != "fraser":
         return playerName
 
-    message = "Not Today Fraser"
-    return message
+    print("Not Today Fraser")
+    quit()
+
+def setUserInput(intOrString):
+    global userInput
+    userInput = intOrString()
 
 def gettrumpSuit():
     trumpSuitArr = ["C", "D", "H", "S"]
@@ -112,6 +116,7 @@ def cardsValue2(opponentCard):
 
 
 def playGame(playerDeck, opponentDeck, playerName, trumpSuit):
+    setUserInput(getInputInt)
     while Gameplaying:
         while u < len(playerDeck):
 
@@ -119,7 +124,7 @@ def playGame(playerDeck, opponentDeck, playerName, trumpSuit):
             #print(trumpSuit)
         # print(opponentDeck)
 
-            cardChoice = (input("What card do you want to play"))
+            cardChoice = userInput.getInputString()
 
             cardChoice = (int)(cardChoice)
             print(cardChoice)
