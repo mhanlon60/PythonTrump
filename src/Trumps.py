@@ -125,8 +125,6 @@ def playGame(playerDeck, opponentDeck, playerName, trumpSuit):
         # print(opponentDeck)
 
             cardChoice = userInput.getInputString()
-
-            cardChoice = (int)(cardChoice)
             print(cardChoice)
 
             while (cardChoice > len(playerDeck[0]) or cardChoice < 1):
