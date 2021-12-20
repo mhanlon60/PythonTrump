@@ -5,13 +5,9 @@ import src.Trumps
 class TrumpsTest(unittest.TestCase):
 
     def test_getAccuratePlayerName(self):
-        trueArray = ["Daniel", "Mark"]
-        result = src.Trumps.getName()
+        trueArray = ["daniel", "mark"]
+        result = src.Trumps.getName("mark").lower()
         self.assertIn(result, trueArray)
-
-    def test_notFraser(self):
-        result = src.Trumps.getName()
-        self.assertEqual("Not Today Fraser", result)
 
     def test_trumpSuit(self):
         result = src.Trumps.gettrumpSuit()
@@ -21,13 +17,6 @@ class TrumpsTest(unittest.TestCase):
         import os.path
         from os import path
         self.assertTrue(path.exists("Leaderboard.txt"))
-
-    def test_QuitAfterPlaying(self):
-          with self.assertRaises(SystemExit) as cm:
-              src.Trumps.playGame([["C5", "C8", "D8", "DK", "HJ", "HQ", "HA"]],
-                                  [["C2", "C6", "D2", "DQ", "H2", "H10", "HK"]], "Mark", "H")
-
-          self.assertEqual(cm.exception.code, None)
 
     def test_playerCardsValue(self):
         result = src.Trumps.cardsValue1("CK")

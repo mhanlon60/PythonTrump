@@ -1,8 +1,8 @@
 from src.playingCard import generateDeck, shuffleCards, dealCards
 from src.Input import Input
-from getInputString import getInputString
-from getInputInt import getInputInt
-from Output import Output
+from src.getInputString import getInputString
+from src.getInputInt import getInputInt
+from src.Output import Output
 import random
 
 
@@ -34,14 +34,14 @@ deck = initDeck()
 # printToScreen(deck)
 
 
-def getName():
-    setUserInput(getInputString)
-    playerName = userInput.getInput()
-    if playerName.lower() != "fraser":
+def getName(testInput = ""):
+    if testInput == "":
+        setUserInput(getInputString)
+        playerName = userInput.getInput()
         return playerName
-
-    Output.printToScreen("Not Today Fraser")
-    quit()
+    else:
+        playerName = testInput
+        return playerName
 
 def setUserInput(intOrString):
     global userInput
