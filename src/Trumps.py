@@ -2,6 +2,7 @@ from src.playingCard import generateDeck, shuffleCards, dealCards
 from src.Input import Input
 from getInputString import getInputString
 from getInputInt import getInputInt
+from Output import Output
 import random
 
 
@@ -30,16 +31,16 @@ def initDeck():
 
 
 deck = initDeck()
-# print(deck)
+# printToScreen(deck)
 
 
 def getName():
     setUserInput(getInputString)
-    playerName = userInput.getInputString()
+    playerName = userInput.getInput()
     if playerName.lower() != "fraser":
         return playerName
 
-    print("Not Today Fraser")
+    Output.printToScreen("Not Today Fraser")
     quit()
 
 def setUserInput(intOrString):
@@ -50,7 +51,7 @@ def gettrumpSuit():
     trumpSuitArr = ["C", "D", "H", "S"]
     r = (random.randint(0, 3))
     trumpSuit = trumpSuitArr[r]
-    print("Trumps are " + trumpSuit)
+    Output.printToScreen("Trumps are " + trumpSuit)
     return trumpSuit;
 
 def dealPlayerCards(deck):
@@ -120,18 +121,19 @@ def playGame(playerDeck, opponentDeck, playerName, trumpSuit):
     while Gameplaying:
         while u < len(playerDeck):
 
-            print(playerDeck)
-            #print(trumpSuit)
-        # print(opponentDeck)
+            Output.printToScreen(playerDeck)
+            #Output.printToScreen(trumpSuit)
+        # Output.printToScreen(opponentDeck)
 
-            cardChoice = userInput.getInputString()
-            print(cardChoice)
+            cardChoice = userInput.getInput()
+            Output.printToScreen(cardChoice)
 
             while (cardChoice > len(playerDeck[0]) or cardChoice < 1):
-                cardChoice = (int)(input("Error! What card do you want to play"))
+                Output.printToScreen("Error please re-enter your card choice")
+                cardChoice = userInput.getInput()
 
             chosenCard = playerDeck[0][cardChoice - 1]
-            print("You have chosen " + chosenCard)
+            Output.printToScreen("You have chosen " + chosenCard)
 
             playerDeck[0].remove(chosenCard)
 
@@ -151,16 +153,16 @@ def playGame(playerDeck, opponentDeck, playerName, trumpSuit):
                         if (opponentDeck[0][s][0] == chosenCard[0]):
                             opponentCard = opponentDeck[0][s]
                             opponentDeck[0].pop(s)
-                            print("Opponent plays " + opponentCard)
+                            Output.printToScreen("Opponent plays " + opponentCard)
                             foundsameSuit = True
 
                             if (foundsameSuit == True):
                                ## if ((len(chosenCard) and len(opponentCard)) == 2):
                                     if (cardsValue1(chosenCard) > cardsValue2(opponentCard)):
-                                        print("You win\n")
+                                        Output.printToScreen("You win\n")
                                         handswon = handswon + 1
                                     elif (cardsValue1(chosenCard) < cardsValue2(opponentCard)):
-                                        print("You lost\n")
+                                        Output.printToScreen("You lost\n")
                                         handslost = handslost + 1
                                ## else:
                                 ##    if (len(chosenCard) == 2 and (int(ord(chosenCard[1]))) > int(ord("A"))):
@@ -180,11 +182,11 @@ def playGame(playerDeck, opponentDeck, playerName, trumpSuit):
                             if (opponentDeck[0][t][0] == trumpSuit):
                                 opponentCard = opponentDeck[0][t]
                                 opponentDeck[0].pop(t)
-                                print("Opponent plays " + opponentCard)
+                                Output.printToScreen("Opponent plays " + opponentCard)
                                 foundtrumpSuit = True
 
                                 if (foundtrumpSuit == True and foundsameSuit == False):
-                                    print("You lose\n")
+                                    Output.printToScreen("You lose\n")
                                     handslost = handslost + 1
 
                                 Suitvalidated = True
@@ -196,27 +198,27 @@ def playGame(playerDeck, opponentDeck, playerName, trumpSuit):
 
                     if (foundsameSuit == False and foundtrumpSuit == False):
                         opponentCard = opponentDeck[0][0]
-                        print("Opponent plays " + opponentCard)
+                        Output.printToScreen("Opponent plays " + opponentCard)
                         opponentDeck[0].pop(0)
                         foundnoSuit = True
 
                         if (foundnoSuit == True):
-                            print("You win\n")
+                            Output.printToScreen("You win\n")
                             handswon = handswon + 1
 
                         Suitvalidated = True
 
                 if (len(playerDeck[0]) == 0):
                     if (handslost < handswon):
-                        print("You win the game")
+                        Output.printToScreen("You win the game")
                         Gameplaying = False
                         leaderboard(handswon, handslost, playerName)
                     elif (handslost > handswon):
-                        print("You lose the game")
+                        Output.printToScreen("You lose the game")
                         Gameplaying = False
                         leaderboard(handswon, handslost, playerName)
                     else:
-                        print("You Draw")
+                        Output.printToScreen("You Draw")
                         Gameplaying = False
                         leaderboard(handswon, handslost, playerName)
 
@@ -225,9 +227,9 @@ def playGame(playerDeck, opponentDeck, playerName, trumpSuit):
 def declareMethods():
     deck = initDeck()
     playerDeck = dealPlayerCards(deck)
-    #print(playerDeck)
+    #Output.printToScreen(playerDeck)
     opponentDeck = dealOpponentCards(deck)
-    #print(opponentDeck)
+    #Output.printToScreen(opponentDeck)
     playerName = getName()
     trumpSuit = gettrumpSuit()
     playGame(playerDeck, opponentDeck, playerName, trumpSuit)
