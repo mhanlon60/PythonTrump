@@ -17,10 +17,6 @@ def initDeck():
     shuffleCards(deck)
     return deck
 
-deck = initDeck()
-# printToScreen(deck)
-
-
 def getName(testInput = ""):
     if testInput == "":
         setUserInput(getInputString)
@@ -65,7 +61,7 @@ def leaderboard(handswon, handslost, playerName):
 
 def cardsValue1(chosenCard):
 
-    intvalue1 = 0;
+    intvalue1 = 0
 
     if chosenCard[1] == "J":
         intvalue1 = 1000
@@ -85,7 +81,7 @@ def cardsValue1(chosenCard):
 
 def cardsValue2(opponentCard):
 
-    intvalue2 = 0;
+    intvalue2 = 0
 
     if opponentCard[1] == "J":
         intvalue2 = 1000
@@ -110,7 +106,6 @@ def playGame(playerDeck, opponentDeck, playerName, trumpSuit):
 
             Output.printToScreen(playerDeck)
             #Output.printToScreen(trumpSuit)
-        # Output.printToScreen(opponentDeck)
 
             cardChoice = userInput.getInput()
             Output.printToScreen(cardChoice)
@@ -144,20 +139,13 @@ def playGame(playerDeck, opponentDeck, playerName, trumpSuit):
                             foundsameSuit = True
 
                             if (foundsameSuit == True):
-                               ## if ((len(chosenCard) and len(opponentCard)) == 2):
                                     if (cardsValue1(chosenCard) > cardsValue2(opponentCard)):
                                         Output.printToScreen("You win\n")
                                         handswon = handswon + 1
                                     elif (cardsValue1(chosenCard) < cardsValue2(opponentCard)):
                                         Output.printToScreen("You lost\n")
                                         handslost = handslost + 1
-                               ## else:
-                                ##    if (len(chosenCard) == 2 and (int(ord(chosenCard[1]))) > int(ord("A"))):
-                                  ##      print("You win\n")
-                                    ##    handswon = handswon + 1
-                                    ##else:
-                                      ##  print("You lost\n")
-                                        ##handslost = handslost + 1
+
 
                             Suitvalidated = True
                             break
@@ -213,6 +201,7 @@ def playGame(playerDeck, opponentDeck, playerName, trumpSuit):
 
 def declareMethods():
     deck = initDeck()
+    #Output.printToScreen(deck)
     playerDeck = dealPlayerCards(deck)
     #Output.printToScreen(playerDeck)
     opponentDeck = dealOpponentCards(deck)

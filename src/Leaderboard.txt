@@ -1,3 +1,0 @@
-Player  Games
-mark: 1
-Opponent: 0
