@@ -5,20 +5,8 @@ from src.getInputInt import getInputInt
 from src.Output import Output
 import random
 
-
-deck = []
-playerDeck = []
-opponentDeck = []
 startingCards = 7
-trumpSuit = ""
-u = 0;
-endRound = False
-trump = False
-gameover = False
-Gameplaying = True;
-handplaying = True;
-chosenCard = ""
-opponentCard = ""
+Gameplaying = True
 handswon = 0
 handslost = 0
 
@@ -28,7 +16,6 @@ def initDeck():
     deck = generateDeck()
     shuffleCards(deck)
     return deck
-
 
 deck = initDeck()
 # printToScreen(deck)
@@ -52,7 +39,7 @@ def gettrumpSuit():
     r = (random.randint(0, 3))
     trumpSuit = trumpSuitArr[r]
     Output.printToScreen("Trumps are " + trumpSuit)
-    return trumpSuit;
+    return trumpSuit
 
 def dealPlayerCards(deck):
     playerDeck = dealCards(deck, startingCards, 1)
@@ -119,7 +106,7 @@ def cardsValue2(opponentCard):
 def playGame(playerDeck, opponentDeck, playerName, trumpSuit):
     setUserInput(getInputInt)
     while Gameplaying:
-        while u < len(playerDeck):
+        while len(playerDeck) > 0:
 
             Output.printToScreen(playerDeck)
             #Output.printToScreen(trumpSuit)
