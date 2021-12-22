@@ -146,7 +146,6 @@ def playGame(playerDeck, opponentDeck, playerName, trumpSuit):
                                         Output.printToScreen("You lost\n")
                                         handslost = handslost + 1
 
-
                             Suitvalidated = True
                             break
 
